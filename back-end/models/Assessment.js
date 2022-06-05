@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 module.exports = function() {
+
     const schema = mongoose.Schema({
         datetime: {
             type: Date,
@@ -13,7 +14,7 @@ module.exports = function() {
         },
         description: {
             type: String,
-            required: false // atributo opcional
+            required: false     // atributo opcional
         },
         user: {
             type: mongoose.ObjectId,
@@ -22,5 +23,5 @@ module.exports = function() {
         }
     })
 
-    return mongoose.model('Assessment', schema, 'assessment')
+    return mongoose.model('Assessment', schema, 'assessments')
 }

@@ -2,15 +2,13 @@ const express = require('express')
 const router = express.Router()
 const verifyToken = require('../lib/verify_token')
 
-// Importa o controller correspondente 
+// Importa o controller correspondente
 const controller = require('../controllers/assessment')
 
-router.post('/', controller.create)
+router.post('/', verifyToken, controller.create)
 router.get('/', verifyToken, controller.retrieve)
-router.post('/:id', verifyToken, controller.retrieve)
-router.get('/', controller.retrieve)
-router.get('/:id', controller.retrieveOne)
-router.put('/', controller.update)
-router.delete('/', controller.delete)
+router.get('/:id', verifyToken, controller.retrieveOne)
+router.put('/', verifyToken, controller.update)
+router.delete('/', verifyToken, controller.delete)
 
-module.exports = router 
+module.exports = router
