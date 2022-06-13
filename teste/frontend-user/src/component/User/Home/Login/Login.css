@@ -1,0 +1,41 @@
+input {
+    margin-left: 5px;
+    height: 20px;
+    border-color: #D3D4D3;
+}
+
+form {
+    text-align: center;
+}
+
+label {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.body-form {
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.text-form {
+    text-align: initial;
+}
+
+.btn-confirmar {
+    font-size: 11pt;
+    font-family: Calibri;
+    height: 30px;
+    width: 100px;
+    border-style: solid;
+    border-width: 0;
+    background-color: RoyalBlue;
+    color: white;
+}
+
+.content-btn {
+    margin-bottom: 25px;
+}

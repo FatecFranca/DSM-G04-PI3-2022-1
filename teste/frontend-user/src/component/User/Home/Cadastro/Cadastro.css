@@ -1,0 +1,29 @@
+.text-form {
+    text-align: initial;
+}
+
+.btn-cadastrar {
+    font-size: 11pt;
+    font-family: Calibri;
+    height: 30px;
+    width: 100px;
+    border-style: solid;
+    border-width: 0;
+    background-color: RoyalBlue;
+    color: white;
+}
+
+.body-form-cadastro {
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /* margin-top: 90px; */
+}
+form {
+    text-align: center;
+}
+
+.content-btn {
+    margin-bottom: 25px;
+}

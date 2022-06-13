@@ -9,6 +9,7 @@ const controller = {}   // Objeto vazio
 // entrada do glossário
 controller.create = async (req, res) => {
     try {
+        console.log(req);
         // É necessário agora ter um campo 'password'
         // no body
         if(!req.body.password) return res.status(500).send({error: 'Path "password" is required'})
