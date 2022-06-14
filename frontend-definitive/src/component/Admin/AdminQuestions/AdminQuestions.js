@@ -5,12 +5,12 @@ import MenuHorizontal from "../MenuHorizontal/MenuHorizontal";
 import Rodape from "../Rodape/Rodape";
 
 import { useEffect, useState } from "react";
-import { api } from '../../services/api.js'
+import { api } from '../../../services/api'
 
-import "./Questions.css"
+import "./AdminQuestions.css"
 
 //export default function Questions() {
-function Questions() {  
+function AdminQuestions() {  
   const [question, setQuestion] = useState([])
 
   useEffect(() => {
@@ -73,5 +73,5 @@ function Questions() {
   );
 }
 
-export default Questions
+export default AdminQuestions
 

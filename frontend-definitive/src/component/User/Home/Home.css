@@ -1,5 +1,6 @@
-.home {
+.home-user {
     display: block;
+    height: 70vh;
 }
 
 .user-login {

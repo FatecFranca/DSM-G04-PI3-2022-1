@@ -1,5 +1,7 @@
 import './Questions.css';
 import React, {useEffect, useState} from "react";
+import { Header } from '../Header/Header.js';
+import { Footer } from '../Footer/Footer.js';
 
 
 
@@ -54,47 +56,51 @@ export default function Questions(){
     
 
     return(
-        <div className='container-questions'>
-            <div className='title-questions'>
-                    <h2>Nome do Tema</h2>
-            </div>
-            <div className='body-questions'>
-                <div className='questions'>
-                {
-                    question ? question.map(question => {
-                        return(
-                            <>
-                                <div className='question-card'>
-                                    <span>Pergunta {question.number}:</span>
-                                    <span style={{marginLeft: 5}}>{question.enunciado}</span>
-                                </div>
-                                <div className='selects-answer'>
-                                    <div className='checkbox-card'>
-                                        <input type="checkbox" className='checkbox-input' /* checked={question.check_answer == 1 ? true : false} */ onChange={e => validationCheckbox(e.target.checked,  1, question.number)}/>
-                                        <span>Sim</span>
-                                    </div>
-                                    <div className='checkbox-card'>
-                                        <input type="checkbox" className='checkbox-input' /* checked={question.check_answer == 2 ? true : false} */ onChange={e => validationCheckbox(e.target.checked,  2, question.number)}/>
-                                        <span>Não</span>
-                                    </div>
-                                    <div className='checkbox-card'>
-                                        <input type="checkbox" className='checkbox-input' /* checked={question.check_answer == 3 ? true : false} */ onChange={e => validationCheckbox(e.target.checked, 3, question.number)}/>
-                                        <span>Parcialmente</span>
-                                    </div>
-                                </div>
-                                <div>
-                                <textarea placeholder='Observações' className='text-area'>
-                                </textarea>
-                                </div>
-                            </>
-                        )
-                    }) : <></>
-                }
-                <div className='btn-save-form'>
-                    <button className='btn-save'>Salvar</button>
+        <div className='container-body'>
+            <Header/>
+            <div className='container-questions'>
+                <div className='title-questions'>
+                        <h2>Nome do Tema</h2>
                 </div>
+                <div className='body-questions'>
+                    <div className='questions'>
+                    {
+                        question ? question.map(question => {
+                            return(
+                                <>
+                                    <div className='question-card'>
+                                        <span>Pergunta {question.number}:</span>
+                                        <span style={{marginLeft: 5}}>{question.enunciado}</span>
+                                    </div>
+                                    <div className='selects-answer'>
+                                        <div className='checkbox-card'>
+                                            <input type="checkbox" className='checkbox-input' /* checked={question.check_answer == 1 ? true : false} */ onChange={e => validationCheckbox(e.target.checked,  1, question.number)}/>
+                                            <span>Sim</span>
+                                        </div>
+                                        <div className='checkbox-card'>
+                                            <input type="checkbox" className='checkbox-input' /* checked={question.check_answer == 2 ? true : false} */ onChange={e => validationCheckbox(e.target.checked,  2, question.number)}/>
+                                            <span>Não</span>
+                                        </div>
+                                        <div className='checkbox-card'>
+                                            <input type="checkbox" className='checkbox-input' /* checked={question.check_answer == 3 ? true : false} */ onChange={e => validationCheckbox(e.target.checked, 3, question.number)}/>
+                                            <span>Parcialmente</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                    <textarea placeholder='Observações' className='text-area'>
+                                    </textarea>
+                                    </div>
+                                </>
+                            )
+                        }) : <></>
+                    }
+                    <div className='btn-save-form'>
+                        <button className='btn-save'>Salvar</button>
+                    </div>
+                    </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }

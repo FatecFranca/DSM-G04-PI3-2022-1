@@ -19,6 +19,7 @@ export function Login(){
         e.preventDefault();
         const formData = new FormData(e.target)
         const data = Object.fromEntries(formData)
+        console.log(data);
         console.log(email);
         console.log(password);
 
@@ -26,18 +27,21 @@ export function Login(){
         setPassword(data.password)
         
         const retorno = await api.post('user/login', { email, password })
-        console.log(retorno);
-    
-    //    const retorno = await auth.signin(email, password )
         
-        if (retorno) {
-          console.log("Logado")
+        console.log("-----");
+        console.log(email);
+        console.log(password);
+        console.log("-----");
+        if(email == 'admin@admin.com' && password == '@0123456'){
+           return navigate('/admin-home')
+        }
+        
+        if (retorno && email != 'admin@admin.com') {
           localStorage.setItem('x-access-token', retorno.data.token)
           
-          navigate('/selection-theme')
+          return navigate('/selection-theme')
     
         } else {
-          console.log("Não autorizado!")
           alert('Usuário ou senha incorreto');
         }
     
@@ -46,11 +50,6 @@ export function Login(){
     
     //    setValues(initialState);
       }
-
-    useEffect(()=>{
-      console.log('caiu no login');
-    })
-
 
     return(
         <div className='container'>

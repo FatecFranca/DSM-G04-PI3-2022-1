@@ -1,21 +1,23 @@
 import React from "react";
 import Cabecalho from "../Cabecalho/Cabecalho";
 import MenuHorizontal from "../MenuHorizontal/MenuHorizontal";
+import AreaDados from "../AreaDados/AreaDados";
 
 import Rodape from "../Rodape/Rodape";
 
-import "./Users.css"
+import "./AdminHome.css"
 
-export default function Users() {
+/*interface areaDadosColor {
+  backgroundColor: String;
+}
+*/
+
+export default function AdminHome() {
   return (
-    <div className="user">
+    <div className="home">
       <Cabecalho />
       <MenuHorizontal />
-
-        <div id="areaUser">
-
-        </div>
-
+      <AreaDados />
       <Rodape />
     </div>
   );

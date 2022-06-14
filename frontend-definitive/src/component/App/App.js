@@ -8,13 +8,13 @@ import { Footer } from '../User/Footer/Footer';
 function App() {
   return (
     <div class="main">
-     <Header/>
+     {/* <Header/> */}
         <div class="body">
           <BrowserRouter>
                 <Routers/>
           </BrowserRouter>
         </div>
-      <Footer/> 
+     {/*  <Footer/>  */}
     </div>
   );
 }

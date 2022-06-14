@@ -1,23 +1,22 @@
 import React from "react";
 import Cabecalho from "../Cabecalho/Cabecalho";
 import MenuHorizontal from "../MenuHorizontal/MenuHorizontal";
-import AreaDados from "../AreaDados/AreaDados";
 
 import Rodape from "../Rodape/Rodape";
 
-import "./Home.css"
+import "./AdminAnswers.css"
 
-/*interface areaDadosColor {
-  backgroundColor: String;
-}
-*/
-
-export default function Home() {
+export default function AdminAnswers() {
   return (
-    <div className="home">
+    <div className="answer">
       <Cabecalho />
       <MenuHorizontal />
-      <AreaDados />
+
+        <div id="areaAnswer">
+
+        </div>
+
+
       <Rodape />
     </div>
   );

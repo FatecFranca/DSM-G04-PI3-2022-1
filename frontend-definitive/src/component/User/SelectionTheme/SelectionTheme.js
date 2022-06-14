@@ -2,6 +2,9 @@ import './SelectionTheme.css';
 import React, {useState} from 'react';
 import Questions from '../../User/Questions/Questions';
 import { useNavigate } from 'react-router-dom';
+import { Header } from '../Header/Header.js';
+import { Footer } from '../Footer/Footer.js';
+
 
 
 export default function SelectionTheme(){
@@ -19,28 +22,32 @@ export default function SelectionTheme(){
 
     
     return(
-        <div className='container-theme'>
-            <div className='title-theme'>
-                    <h2>Selecione o Tema:</h2>
-            </div>
-            <div className='body-theme'>
-                <div className='card-theme'>   
-                    {
-                        themes.map(theme => {
-                            return(
-                                <div>
-                                    <button className='btn-text-theme'>
-                                        Disabled Button
-                                    </button>
-                                </div>
-                            )
-                        })
-                    }
+        <div className='container-content'>
+            <Header/>
+            <div className='container-theme'>
+                <div className='title-theme'>
+                        <h2>Selecione o Tema:</h2>
                 </div>
-                <div className='btn-next-container'>
-                    <button className='btn-next'  onClick={routeChange}>Avançar</button>
+                <div className='body-theme'>
+                    <div className='card-theme'>   
+                        {
+                            themes.map(theme => {
+                                return(
+                                    <div>
+                                        <button className='btn-text-theme'>
+                                            Disabled Button
+                                        </button>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    <div className='btn-next-container'>
+                        <button className='btn-next'  onClick={routeChange}>Avançar</button>
+                    </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }

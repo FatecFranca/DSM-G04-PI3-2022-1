@@ -4,18 +4,17 @@ import MenuHorizontal from "../MenuHorizontal/MenuHorizontal";
 
 import Rodape from "../Rodape/Rodape";
 
-import "./Answers.css"
+import "./AdminUsers.css"
 
-export default function Answers() {
+export default function AdminUsers() {
   return (
-    <div className="answer">
+    <div className="user">
       <Cabecalho />
       <MenuHorizontal />
 
-        <div id="areaAnswer">
+        <div id="areaUser">
 
         </div>
-
 
       <Rodape />
     </div>

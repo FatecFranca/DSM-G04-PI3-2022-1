@@ -79,3 +79,7 @@
     align-items: center;
     display: flex;
 }
+
+.container-questions {
+    /* height: 70vh; */
+}
