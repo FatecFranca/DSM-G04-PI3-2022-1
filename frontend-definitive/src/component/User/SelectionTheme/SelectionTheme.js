@@ -10,14 +10,15 @@ import { Footer } from '../Footer/Footer.js';
 export default function SelectionTheme(){
     const navigate = useNavigate();
     const [themes, setThemes] = useState([
-        {'title': 'theme 1'}, {'title': 'theme 2'}, {'title': 'theme 3'},
+        {'id': '629cade532792ed640a437f0', 'title': 'theme 1'}, {'id': '629cae2e32792ed640a437f2', 'title': 'theme 2'}, {'id': '629cae7b32792ed640a437f4', 'title': 'theme 3'},
         {'title': 'theme 4'}, {'title': 'theme 5'}, {'title': 'theme 6'}
     ]);
 
 
-    const routeChange = () =>{ 
-        let path = `/questions`; 
-        navigate(path);
+    function routeChange (id) { 
+        console.log(id)
+        let path = `/questions/` + id; 
+        navigate(path); 
     }
 
     
@@ -32,9 +33,11 @@ export default function SelectionTheme(){
                     <div className='card-theme'>   
                         {
                             themes.map(theme => {
+                                console.log(theme.id)
                                 return(
                                     <div>
-                                        <button className='btn-text-theme'>
+                    
+                                        <button onClick={() => routeChange(theme.id)} className='btn-text-theme'>
                                             Disabled Button
                                         </button>
                                     </div>

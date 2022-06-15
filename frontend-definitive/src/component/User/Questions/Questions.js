@@ -2,13 +2,47 @@ import './Questions.css';
 import React, {useEffect, useState} from "react";
 import { Header } from '../Header/Header.js';
 import { Footer } from '../Footer/Footer.js';
+import { useParams } from 'react-router-dom'
+import {api} from '../../../services/api'
+const token = localStorage.getItem('x-access-token');
 
+export default function Questions(props){
+    const [question, setQuestion] = useState([])
+    const [group, setGroup] = useState([])
+    const{id}=useParams()
 
+    useEffect(() => {
+        api.get('http://localhost:3000/question/group/' + id, {
+            headers: {'x-access-token': token}
+          })
+          .then((res) => {
+            setQuestion(res.data)
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+          api.get('http://localhost:3000/question-group/' + id, {
+            headers: {'x-access-token': token}
+          })
+          .then((res) => {
+            setGroup(res.data)
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+        
+        // fetch('http://localhost:3000/question/group/' + id, {
+        //     method: 'GET',
+        //     headers: {'x-access-token': token}
+        //})
+        // })
+        // .then((data) => {
+        //     console.log(data)
+        //     setQuestion(data)
+        // })
+        // .catch((error) => console.log(error))
+    }, [])
 
-export default function Questions(){
-    const [question, setQuestion] = useState([{'number': 1, 'enunciado': 'texto do enunciado ?', 'check_answer': 0}, {'number': 2, 'enunciado': 'texto do enunciado ?', 'check_answer': 0},
-        {'number': 0, 'enunciado': 'texto do enunciado ?', 'check_answer': 0}, {'number': 4, 'enunciado': 'texto do enunciado ?', 'check_answer': 0}
-    ])
     const [checkAnswer, setCheckAnswer] = useState(false);
     const [checkAnswer1, setCheckAnswer1] = useState(false);
     const [checkAnswer2, setCheckAnswer2] = useState(false);
@@ -52,15 +86,13 @@ export default function Questions(){
         setCheckAnswer3(checkAnswer3);
     }, [checkAnswer1, checkAnswer2, checkAnswer3]) */
 
-
-    
-
     return(
         <div className='container-body'>
             <Header/>
             <div className='container-questions'>
                 <div className='title-questions'>
-                        <h2>Nome do Tema</h2>
+                    
+                        <h2>{group.group}</h2>
                 </div>
                 <div className='body-questions'>
                     <div className='questions'>
@@ -70,7 +102,7 @@ export default function Questions(){
                                 <>
                                     <div className='question-card'>
                                         <span>Pergunta {question.number}:</span>
-                                        <span style={{marginLeft: 5}}>{question.enunciado}</span>
+                                        <span style={{marginLeft: 5}}>{question.enunciation}</span>
                                     </div>
                                     <div className='selects-answer'>
                                         <div className='checkbox-card'>
