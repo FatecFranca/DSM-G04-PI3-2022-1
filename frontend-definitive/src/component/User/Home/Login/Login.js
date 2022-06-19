@@ -61,7 +61,7 @@ export function Login(){
                                 <span>E-mail: </span>
                             </td>
                             <td>
-                                <input type="text" name="usuario" required value={email} onChange={e => setEmail(e.target.value)}/>
+                                <input type="text" name="email" required value={email} onChange={e => setEmail(e.target.value)}/>
                             </td>
                         </tr>
                         <tr>
@@ -69,7 +69,7 @@ export function Login(){
                                 <span>Senha: </span>
                             </td>
                             <td>
-                                <input type="password" name="senha" required value={password} onChange={e => setPassword(e.target.value)}/>
+                                <input type="password" name="password" required value={password} onChange={e => setPassword(e.target.value)}/>
                             </td>
                         </tr>
                         <tr>

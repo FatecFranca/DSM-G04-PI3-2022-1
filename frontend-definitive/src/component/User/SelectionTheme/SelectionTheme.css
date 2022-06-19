@@ -11,6 +11,8 @@
 
 .body-theme {
     display: block;
+    justify-content: center;
+    align-items: center;
 }
 
 .title-theme {
@@ -20,10 +22,11 @@
 }
 
 .card-theme {
+    /* flex-direction: row; */
+    flex-wrap: wrap;
+    display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
-    margin-top: 25px;
 }
 
 .btn-text-theme {
@@ -48,4 +51,9 @@
     color: white;
     margin-top: 10%;
     margin-bottom: 25px;
+}
+
+.card-group {
+    display: flex;
+    margin-bottom: 15px;
 }
