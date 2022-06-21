@@ -27,17 +27,14 @@ export function Login(){
         setPassword(data.password)
         
         const retorno = await api.post('user/login', { email, password })
-        
-        console.log("-----");
-        console.log(email);
-        console.log(password);
-        console.log("-----");
+
         if(email == 'admin@admin.com' && password == '@0123456'){
            return navigate('/admin-home')
         }
         
         if (retorno && email != 'admin@admin.com') {
           localStorage.setItem('x-access-token', retorno.data.token)
+          localStorage.setItem('userId', retorno.data.user_id)
           
           return navigate('/selection-theme')
     

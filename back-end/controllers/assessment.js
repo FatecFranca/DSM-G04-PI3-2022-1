@@ -7,9 +7,11 @@ const controller = {}   // Objeto vazio
 // entrada do glossário
 controller.create = async (req, res) => {
     try {
-        await Assessment.create(req.body)
+        console.log(req)
+        const data = await Assessment.create(req.body)
         // HTTP 201: Created
-        res.status(201).end()
+        console.log(data);
+        res.json({assessment_id: data._id})
     }
     catch(error) {
         console.error(error)

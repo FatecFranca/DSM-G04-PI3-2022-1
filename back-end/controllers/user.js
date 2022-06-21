@@ -137,7 +137,7 @@ controller.login = async (req, res) => {
                     // em segundos
                     const token = jwt.sign({ id: user._id }, process.env.SECRET, { expiresIn: 3600 })
                     // Resposta com HTTP 200 implícito
-                    res.json({auth: true, token})
+                    res.json({auth: true, token, user_id:user._id})
                 }
                 else {
                     // HTTP 401: Unauthorized
