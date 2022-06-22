@@ -8,11 +8,12 @@ function MenuHorizontal() {
     <div className="menuHorizontal">
       <nav className='navMenu'>
                 <ul>
-                    <li> <Link to="/"> Login </Link> </li>
-                    <li> <Link to="/logout"> Logout </Link> </li>
-                    <li> <Link to="/questions"> Questions </Link> </li>
-                    <li> <Link to="/answers"> Answers </Link> </li>
-                    <li> <Link to="/users"> Users </Link> </li>
+                    {/* <li> <Link to="/"> Login </Link> </li> */}
+                    <li> <Link to="/admin-home" > Home </Link></li>
+                    <li> <Link to="/admin-questions"> Questions </Link> </li>
+                    <li> <Link to="/admin-answers"> Answers </Link> </li>
+                    <li> <Link to="/admin-users"> Users </Link> </li>
+                    <li> <Link to="/"> Logout </Link> </li>
                 </ul>
 
             </nav>

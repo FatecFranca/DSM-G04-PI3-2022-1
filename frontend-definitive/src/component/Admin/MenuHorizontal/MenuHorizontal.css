@@ -1,9 +1,12 @@
 .menuHorizontal {
   height: 8vh;
-  border: 0.2vh solid darkmagenta;
+  /* border: 0.2vh solid darkmagenta; */
+  border: 0.2vh solid #B20000;
+  
 
   margin: 0.2% 0.2% 0.2% 0.2%;
   background-color: beige;
+ 
 
   padding-top: 0.4%;
 
@@ -11,10 +14,13 @@
   color: red;
 
   text-align: center;
+ 
 }
 
 .navMenu {
   margin-top: 0.7vh;
+
+  padding-left: 50vh; /**/
 }
 .navMenu ul {
   list-style: none;

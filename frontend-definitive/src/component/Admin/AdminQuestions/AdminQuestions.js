@@ -1,12 +1,11 @@
 import React from "react";
 import Cabecalho from "../Cabecalho/Cabecalho";
 import MenuHorizontal from "../MenuHorizontal/MenuHorizontal";
-
 import Rodape from "../Rodape/Rodape";
-
 import { useEffect, useState } from "react";
 import { api } from '../../../services/api'
-
+import { Header } from "../../User/Header/Header";
+import { Footer } from "../../User/Footer/Footer";
 import "./AdminQuestions.css"
 
 //export default function Questions() {
@@ -22,7 +21,8 @@ function AdminQuestions() {
 
   return (
     <div className="question">
-      <Cabecalho />
+      {/* <Cabecalho /> */}
+      <Header/>
       <MenuHorizontal />
 
       <div id="areaQuestion">
@@ -68,7 +68,8 @@ function AdminQuestions() {
 
       </div>
 
-      <Rodape />
+      {/* <Rodape /> */}
+      <Footer/>
     </div>
   );
 }
