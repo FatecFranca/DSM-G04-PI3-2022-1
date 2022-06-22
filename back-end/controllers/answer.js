@@ -57,6 +57,7 @@ controller.update = async (req, res) => {
     try {
         const id = req.body._id
         const result = await Answer.findByIdAndUpdate(id, req.body)
+        //console.log(result);
         // HTTP 204: No content
         if(result) res.status(204).end()
         else res.status(404).end()

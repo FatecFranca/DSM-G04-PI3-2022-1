@@ -2,13 +2,16 @@ import './Questions.css';
 import React, {useEffect, useState} from "react";
 import { Header } from '../Header/Header.js';
 import { Footer } from '../Footer/Footer.js';
-import { useParams } from 'react-router-dom'
-import {api} from '../../../services/api'
+import { useParams } from 'react-router-dom';
+import {api} from '../../../services/api';
+import { useNavigate } from 'react-router-dom';
 const token = localStorage.getItem('x-access-token');
 
 export default function Questions(props){
+    const navigate = useNavigate();
     const [question, setQuestion] = useState([])
     const [group, setGroup] = useState([])
+    const [observation, setObservation] = useState('');
     const{id}=useParams()
 
     useEffect(() => {
@@ -30,61 +33,117 @@ export default function Questions(props){
           .catch((error) => {
             console.error(error)
           })
-        
-        // fetch('http://localhost:3000/question/group/' + id, {
-        //     method: 'GET',
-        //     headers: {'x-access-token': token}
-        //})
-        // })
-        // .then((data) => {
-        //     console.log(data)
-        //     setQuestion(data)
-        // })
-        // .catch((error) => console.log(error))
+
+          
     }, [])
 
-    const [checkAnswer, setCheckAnswer] = useState(false);
-    const [checkAnswer1, setCheckAnswer1] = useState(false);
-    const [checkAnswer2, setCheckAnswer2] = useState(false);
-    const [checkAnswer3, setCheckAnswer3] = useState(false);
+    async function getAnswer(){
+        const assessment_id = localStorage.getItem('assessment_id');
 
-    function validationCheckbox(check, number, number_question){
-        /* console.log(question);
-        setQuestion(question.forEach(quest => {
-            if(quest.number == number_question){
-                if(check && quest.check_answer < 1){
-                    quest.check_answer = number;
-                }
-            }
-        })); 
-
-        console.log(question); */
-        /* if(check && question.check_answer == 0){
-            console.log('caiu no 1 if')
-            question.check_answer = number;
-        }
-
-        if(!check && question.check_answer > 0){
-            console.log('caiu no 2 if')
-            question.check_answer = 0;
-        } */
-
-        /* if(check && question.check_answer != 0){
-            console.log('caiu aqui');
-            return alert('Já existe uma resposta ativa')
-        }  */
+        api.get('http://localhost:3000/answer/assessment/' + assessment_id, {
+            headers: {'x-access-token': token}
+          })
+          .then((res) => {
+            if(res.data){
+                question.forEach(e => {
+                    res.data.forEach(value => {
+                        if(e.group == value.question.group && e.number == value.question.number){
+                            if(value.comments){
+                                e['observation'] = value.comments;
+                                e['ativo'] = true;
+                                e['answerId'] = value._id
+                            }
+                            if(value.objective_answer){
+                                e['selectionAnswer'] = value.objective_answer;
+                                e['ativo'] = true;
+                                e['answerId'] = value._id
+                            }
+                                
+                        }
+    
+                        return
+                        
+                    });
+    
+                    return 
+                });
+    
+    
+                setQuestion(question);
+            }            
+          })
+          .catch((error) => {
+            console.error(error)
+          })
     }
 
+    async function onSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target)
+        const data = Object.fromEntries(formData)
+        const assessment_id = localStorage.getItem('assessment_id');
 
-  /*   useEffect(()=> {
-        console.log('teve mudança');
-        console.log(checkAnswer1);
-        console.log(checkAnswer2);
-        console.log(checkAnswer3);
-        setCheckAnswer1(checkAnswer1);
-        setCheckAnswer2(checkAnswer2);
-        setCheckAnswer3(checkAnswer3);
-    }, [checkAnswer1, checkAnswer2, checkAnswer3]) */
+        question.forEach(e => {
+
+            if(e.selectionAnswer || e.observation){
+
+                if(e.ativo){
+                    api.put('http://localhost:3000/answer', {assessment: assessment_id, question: e._id, objective_answer: e.selectionAnswer ? e.selectionAnswer : 'P', comments: e.observation ? e.observation : '', _id:e.answerId},{
+                        headers: {'x-access-token': token},
+                    })
+                    .then((res) => {
+                        navigate('/selection-theme');
+                    })
+                    .catch((error) => {
+                        console.error(error)
+                    })
+
+                    return;
+                }
+
+                if(!e.ativo){
+                    api.post('http://localhost:3000/answer', {assessment: assessment_id, question: e._id, objective_answer: e.selectionAnswer ? e.selectionAnswer : 'P', comments: e.observation ? e.observation : ''},{
+                        headers: {'x-access-token': token},
+                    })
+                    .then((res) => {
+                        navigate('/selection-theme');
+                    })
+                    .catch((error) => {
+                        console.error(error)
+                    })
+                }   
+
+                
+            }
+           
+        });
+
+        
+
+    }   
+
+    useEffect(()=>{
+        if(group){
+            getAnswer();
+        }
+           
+    }, [group])
+
+    function onChangeItem (item) {
+        const newQuestion = question.map(e => {
+            if(item.id == e._id){
+                if(item.observation)
+                    e['observation'] = item.observation;
+                if(item.selectionAnswer)
+                    e['selectionAnswer'] = item.selectionAnswer;
+            }
+
+            return e;
+        })
+
+        setQuestion(newQuestion)
+    }
+
 
     return(
         <div className='container-body'>
@@ -96,39 +155,41 @@ export default function Questions(props){
                 </div>
                 <div className='body-questions'>
                     <div className='questions'>
-                    {
-                        question ? question.map(question => {
-                            return(
-                                <>
-                                    <div className='question-card'>
-                                        <span>Pergunta {question.number}:</span>
-                                        <span style={{marginLeft: 5}}>{question.enunciation}</span>
-                                    </div>
-                                    <div className='selects-answer'>
-                                        <div className='checkbox-card'>
-                                            <input type="checkbox" className='checkbox-input' /* checked={question.check_answer == 1 ? true : false} */ onChange={e => validationCheckbox(e.target.checked,  1, question.number)}/>
-                                            <span>Sim</span>
-                                        </div>
-                                        <div className='checkbox-card'>
-                                            <input type="checkbox" className='checkbox-input' /* checked={question.check_answer == 2 ? true : false} */ onChange={e => validationCheckbox(e.target.checked,  2, question.number)}/>
-                                            <span>Não</span>
-                                        </div>
-                                        <div className='checkbox-card'>
-                                            <input type="checkbox" className='checkbox-input' /* checked={question.check_answer == 3 ? true : false} */ onChange={e => validationCheckbox(e.target.checked, 3, question.number)}/>
-                                            <span>Parcialmente</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                    <textarea placeholder='Observações' className='text-area'>
-                                    </textarea>
-                                    </div>
-                                </>
-                            )
-                        }) : <></>
-                    }
-                    <div className='btn-save-form'>
-                        <button className='btn-save'>Salvar</button>
-                    </div>
+                        <form onSubmit={onSubmit}>
+                            {
+                                question ? question.map(question => {
+                                    return(
+                                        <>
+                                            <div className='question-card'>
+                                                <span>Pergunta {question.number}:</span>
+                                                <span style={{marginLeft: 5}}>{question.enunciation}</span>
+                                            </div>
+                                            <div className='selects-answer'>
+                                                <div className='checkbox-card'>
+                                                    <input type="checkbox" className='checkbox-input' checked={question.selectionAnswer == 'Y' ? true : false} onChange={e => onChangeItem({id: question._id, selectionAnswer:e.target.checked ? 'Y' : ''})}/>
+                                                    <span>Sim</span>
+                                                </div>
+                                                <div className='checkbox-card'>
+                                                    <input type="checkbox" className='checkbox-input' checked={question.selectionAnswer == 'N' ? true : false} onChange={e => onChangeItem({id: question._id, selectionAnswer:e.target.checked ? 'N' : ''})}/>
+                                                    <span>Não</span>
+                                                </div>
+                                                <div className='checkbox-card'>
+                                                    <input type="checkbox" className='checkbox-input' checked={question.selectionAnswer == 'X' ? true : false} onChange={e => onChangeItem({id: question._id, selectionAnswer:e.target.checked ? 'X' : ''})}/>
+                                                    <span>Parcialmente</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <textarea placeholder='Observações' className='text-area' type="input" name='observation' value={question.observation} onChange={e => onChangeItem({id: question._id, observation:e.target.value})}>
+                                                </textarea>
+                                            </div>
+                                        </>
+                                    )
+                                }) : <></>
+                            }
+                            <div className='btn-save-form'>
+                                <button type='submit' className='btn-save'>Salvar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

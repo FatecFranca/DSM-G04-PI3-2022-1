@@ -56,9 +56,6 @@ export default function SelectionTheme(){
             .catch((error) => {
             console.error(error)
             })
-
-        
-        
     }
 
     useEffect(()=>{
@@ -114,7 +111,7 @@ export default function SelectionTheme(){
                         }
                     </div>
                     <div className='btn-next-container'>
-                        <button className='btn-next'>Finalizar</button>
+                        <button className='btn-next' disabled>Finalizar</button>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,9 @@
 .question-card {
     border-bottom: 1px solid black;
     margin-top: 30px;
+    justify-content: initial;
+    align-items: center;
+    display: flex;
 }
 
 .title-questions {

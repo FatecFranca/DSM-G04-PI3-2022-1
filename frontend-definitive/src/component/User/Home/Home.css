@@ -1,6 +1,6 @@
 .home-user {
     display: block;
-    height: 70vh;
+    min-height: 70vh;
 }
 
 .user-login {

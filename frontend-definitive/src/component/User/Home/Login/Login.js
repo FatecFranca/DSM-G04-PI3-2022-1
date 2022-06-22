@@ -19,10 +19,7 @@ export function Login(){
         e.preventDefault();
         const formData = new FormData(e.target)
         const data = Object.fromEntries(formData)
-        console.log(data);
-        console.log(email);
-        console.log(password);
-
+       
         setEmail(data.email)
         setPassword(data.password)
         
@@ -41,9 +38,7 @@ export function Login(){
         } else {
           alert('Usuário ou senha incorreto');
         }
-    
-        console.log("Voltei!")
-        console.log("Retorno: "+retorno.data.token)
+
     
     //    setValues(initialState);
       }
