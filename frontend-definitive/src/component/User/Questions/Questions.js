@@ -216,6 +216,7 @@ export default function Questions(props){
                                 }) : <></>
                             }
                             <div className='btn-save-form'>
+                                <button type='button' onClick={()=>  navigate('/selection-theme')} className='btn-back'>Voltar</button>
                                 <button type='submit' className='btn-save'>Salvar</button>
                             </div>
                         </form>
