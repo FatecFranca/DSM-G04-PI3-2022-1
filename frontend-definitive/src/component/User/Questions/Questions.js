@@ -21,7 +21,9 @@ export default function Questions(props){
             headers: {'x-access-token': token}
           })
           .then((res) => {
-            setQuestion(res.data)
+              setTimeout(() => {
+                setQuestion(res.data)
+              }, 1000);
           })
           .catch((error) => {
             console.error(error)
