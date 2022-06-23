@@ -6,15 +6,23 @@ import { useEffect, useState } from "react";
 import { api } from '../../../services/api'
 import { Header } from "../../User/Header/Header";
 import { Footer } from "../../User/Footer/Footer";
-import "./AdminQuestions.css"
+import "./AdminQuestions.css";
+const token = localStorage.getItem('x-access-token');
 
 //export default function Questions() {
 function AdminQuestions() {  
   const [question, setQuestion] = useState([])
 
   useEffect(() => {
-    api.get('question')
-      .then(response => setQuestion(response.data))
+   api.get('http://localhost:3000/question', {
+            headers: {'x-access-token': token}
+          })
+          .then((res) => {
+            setQuestion(res.data);
+          })
+          .catch((error) => {
+            console.error(error)
+          })
 
   }, []);
  

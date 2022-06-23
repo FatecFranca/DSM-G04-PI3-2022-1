@@ -26,6 +26,8 @@ export function Login(){
         const retorno = await api.post('user/login', { email, password })
 
         if(email == 'admin@admin.com' && password == '@0123456'){
+            localStorage.setItem('x-access-token', retorno.data.token);
+            localStorage.setItem('userId', retorno.data.user_id)
            return navigate('/admin-home')
         }
         
