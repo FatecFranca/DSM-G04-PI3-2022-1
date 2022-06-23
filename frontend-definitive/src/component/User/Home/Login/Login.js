@@ -79,7 +79,7 @@ export function Login(){
                         </tr>
                     </table>
                     <div className='content-btn'>
-                        <input type="submit" value="Confirmar" className='btn-confirmar'/>
+                        <input type="submit" value="Entrar" className='btn-confirmar'/>
                     </div>
                 </form>
             </div>
