@@ -5,8 +5,7 @@ module.exports = function() {
     const schema = mongoose.Schema({
         assessment: {
             type: mongoose.ObjectId,
-            required: true,
-            ref: 'Assessment'
+            ref:'Assessment'
         },
         question: {
             type: mongoose.ObjectId,
@@ -36,7 +35,7 @@ module.exports = function() {
         }
     })
 
-    schema.index({assessment: 1, question: 1}, {unique: true})
+    //schema.index({question: 1}, {unique: false})
 
     return mongoose.model('Answer', schema, 'answers')
 }

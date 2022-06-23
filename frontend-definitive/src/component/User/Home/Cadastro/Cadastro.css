@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&family=Roboto+Slab&display=swap');
+
 .text-form {
     text-align: initial;
 }
@@ -11,6 +13,7 @@
     border-width: 0;
     background-color: RoyalBlue;
     color: white;
+    font-family: 'Open Sans';
 }
 
 .body-form-cadastro {

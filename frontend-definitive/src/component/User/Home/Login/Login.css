@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&family=Roboto+Slab&display=swap');
+/* @import url('https://fonts.googleapis.com/css2? family= Open+Sans & display=swap'); */
 input {
     margin-left: 5px;
     height: 20px;
@@ -23,6 +25,7 @@ label {
 
 .text-form {
     text-align: initial;
+    font-family: 'Open Sans';
 }
 
 .btn-confirmar {
@@ -34,6 +37,7 @@ label {
     border-width: 0;
     background-color: RoyalBlue;
     color: white;
+    font-family: 'Open Sans';
 }
 
 .content-btn {

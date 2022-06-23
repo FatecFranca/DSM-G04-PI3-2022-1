@@ -5,15 +5,21 @@ import { useNavigate } from 'react-router-dom';
 import { Header } from '../Header/Header.js';
 import { Footer } from '../Footer/Footer.js';
 import {api} from '../../../services/api';
-const token = localStorage.getItem('x-access-token');
-const userId = localStorage.getItem('userId');
-
+import Result from '../Result/Result';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default function SelectionTheme(){
     const navigate = useNavigate();
     const [groups, setGroups] = useState([]);
     const [modalVisible, setModalVisible] = useState(true);
     const [objective, setObjective] = useState('');
+    const [answerQuestion, setAnswerQuestion] = useState(false);
+
+    const assessment_id = localStorage.getItem('assessment_id');
+
+    const token = localStorage.getItem('x-access-token');
+    const userId = localStorage.getItem('userId');
 
     useEffect(() => {
         api.get('http://localhost:3000/question-group', {
@@ -25,12 +31,47 @@ export default function SelectionTheme(){
           .catch((error) => {
             console.error(error)
           })
+
     }, []);
+
+
+    /* useEffect(()=> {
+        api.get('http://localhost:3000/assessment', {
+            headers: {'x-access-token': token}
+          })
+          .then((res) => {
+            console.log(res);           
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+    },[]) */
+
+
+    useEffect(()=>{
+        api.get('http://localhost:3000/answer/assessment/' + assessment_id, {
+            headers: {'x-access-token': token}
+          })
+          .then((res) => {
+            if(res.data){
+                console.log('caiu aqui');
+                setAnswerQuestion(true);
+            }            
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+    })
 
 
     function routeChange (id) { 
         let path = `/questions/` + id; 
         navigate(path); 
+    }
+
+    function assessmentFinish() {
+        if(answerQuestion)
+            navigate('/result'); 
     }
 
     async function onSubmit(e) {
@@ -47,7 +88,6 @@ export default function SelectionTheme(){
             headers: {'x-access-token': token},
             })
             .then((res) => {
-                console.log(res);
                 setModalVisible(false);
                 setObjective('');
                 localStorage.setItem('assessment_id', res.data.assessment_id);
@@ -64,11 +104,21 @@ export default function SelectionTheme(){
        if(assessment)
             setModalVisible(false);
     },[])
+
+
+    function logout(){
+        localStorage.clear();
+        navigate('/')
+    }
+
     
     return(
         <div className='container-content'>
             <Header/>
             <div className='container-theme'>
+                <div className='container-icon-exit'>
+                    <FontAwesomeIcon onClick={()=> logout()} style={{fontSize: 20, color: '#B20000', marginRight: 25}} icon={faSignOutAlt} />
+                </div>
                {
                   modalVisible ? <>
                    <div className="modal-overlay"/>
@@ -98,7 +148,6 @@ export default function SelectionTheme(){
                     <div className='card-theme'>   
                         {
                             groups.map( group => {
-                                console.log(group);
                                 return(
                                     <div className='card-group'>
                     
@@ -111,7 +160,7 @@ export default function SelectionTheme(){
                         }
                     </div>
                     <div className='btn-next-container'>
-                        <button className='btn-next' disabled>Finalizar</button>
+                        <button className='btn-next' onClick={()=> assessmentFinish()}>Finalizar</button>
                     </div>
                 </div>
             </div>

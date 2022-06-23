@@ -5,9 +5,11 @@ import { Footer } from '../Footer/Footer.js';
 import { useParams } from 'react-router-dom';
 import {api} from '../../../services/api';
 import { useNavigate } from 'react-router-dom';
-const token = localStorage.getItem('x-access-token');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default function Questions(props){
+    const token = localStorage.getItem('x-access-token');
     const navigate = useNavigate();
     const [question, setQuestion] = useState([])
     const [group, setGroup] = useState([])
@@ -144,11 +146,19 @@ export default function Questions(props){
         setQuestion(newQuestion)
     }
 
+    function logout(){
+        localStorage.clear();
+        navigate('/')
+    }
+
 
     return(
         <div className='container-body'>
             <Header/>
             <div className='container-questions'>
+                <div className='container-icon-exit'>
+                    <FontAwesomeIcon onClick={()=> logout()} style={{fontSize: 20, color: '#B20000', marginRight: 25}} icon={faSignOutAlt} />
+                </div>
                 <div className='title-questions'>
                     
                         <h2>{group.group}</h2>

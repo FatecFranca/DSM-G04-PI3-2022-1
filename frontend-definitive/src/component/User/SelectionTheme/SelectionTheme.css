@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2? family= Open+Sans:ital@1 & family= Roboto+Slab & display=swap');
+
 .container-theme {
     /* display: block;
     height: 70vh;; */
@@ -22,6 +24,10 @@
     display: flex;
 }
 
+.title-theme>h2 {
+  font-family: 'Roboto Slab';
+}
+
 .card-theme {
     /* flex-direction: row; */
     flex-wrap: wrap;
@@ -33,6 +39,11 @@
 .btn-text-theme {
     height: 80px;
     margin-left: 15px;
+    width: 210px;
+}
+
+.btn-text-theme>h2{
+  font-family: 'Open Sans';
 }
 
 .btn-next-container {
@@ -43,7 +54,7 @@
 
 .btn-next {
     font-size: 11pt;
-    font-family: Calibri;
+    font-family: 'Open Sans';
     height: 30px;
     width: 100px;
     border-style: solid;
@@ -130,4 +141,16 @@
 
 .body-start-assessment {
     margin-top: 25px;
+}
+
+.icon-exit {
+  width: 30px;
+  height: 30px;
+}
+
+.container-icon-exit {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-top: 5px;
 }

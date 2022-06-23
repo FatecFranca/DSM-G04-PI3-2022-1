@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
 .home-user {
     display: block;
     min-height: 70vh;
@@ -26,10 +28,12 @@
     margin-right: 30px;
     /* text-decoration: underline #B20000; */
     border-bottom: 2px solid #B20000;
+    font-family: 'Roboto Slab';
 }
 
 .user-cadastro-selected {
     font-size: 20px;
     /* text-decoration: underline #B20000; */
     border-bottom: 2px solid #B20000;
+    font-family: 'Roboto Slab';
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&family=Roboto+Slab&display=swap');
+
 .container-question {
     display: flex;
     justify-content: center;
@@ -10,6 +12,7 @@
     justify-content: initial;
     align-items: center;
     display: flex;
+    font-family: 'Open Sans'
 }
 
 .title-questions {
@@ -66,7 +69,7 @@
 
 .btn-save {
     font-size: 11pt;
-    font-family: Calibri;
+    font-family: 'Open Sans';
     height: 30px;
     width: 100px;
     border-style: solid;
@@ -85,4 +88,8 @@
 
 .container-questions {
     /* height: 70vh; */
+}
+
+span {
+    font-family: 'Open Sans';
 }
