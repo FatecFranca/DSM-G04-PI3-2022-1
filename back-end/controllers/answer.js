@@ -7,9 +7,16 @@ const controller = {}   // Objeto vazio
 // entrada do glossário
 controller.create = async (req, res) => {
     try {
-        await Answer.create(req.body)
-        // HTTP 201: Created
-        res.status(201).end()
+        const result = await Answer.find({question: req.body.question})
+        if(result.length == 0){
+            await Answer.create(req.body)
+            // HTTP 201: Created
+            res.status(201).end()
+        }else{
+            const result2 = await Answer.findByIdAndUpdate(result[0]._id, req.body)
+            if(result2) res.status(204).end()
+            else res.status(404).end()
+        }
     }
     catch(error) {
         console.error(error)

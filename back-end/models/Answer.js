@@ -35,7 +35,7 @@ module.exports = function() {
         }
     })
 
-    //schema.index({question: 1}, {unique: false})
+    schema.index({assessment: 1, question: 1}, {unique: true})
 
     return mongoose.model('Answer', schema, 'answers')
 }

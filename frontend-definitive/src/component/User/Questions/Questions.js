@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import {api} from '../../../services/api';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faInfo, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default function Questions(props){
     const token = localStorage.getItem('x-access-token');
@@ -14,6 +14,7 @@ export default function Questions(props){
     const [question, setQuestion] = useState([])
     const [group, setGroup] = useState([])
     const [observation, setObservation] = useState('');
+    const [questionAnswer, setQuestionAnswer] = useState([]);
     const{id}=useParams()
 
     useEffect(() => {
@@ -23,7 +24,7 @@ export default function Questions(props){
           .then((res) => {
               setTimeout(() => {
                 setQuestion(res.data)
-              }, 1000);
+              }, 500);
           })
           .catch((error) => {
             console.error(error)
@@ -32,7 +33,11 @@ export default function Questions(props){
             headers: {'x-access-token': token}
           })
           .then((res) => {
-            setGroup(res.data)
+            setGroup(res.data);
+            /* setTimeout(() => {
+                getAnswer();
+            }, 1000); */
+
           })
           .catch((error) => {
             console.error(error)
@@ -71,15 +76,26 @@ export default function Questions(props){
     
                     return 
                 });
-    
-    
-                setQuestion(question);
+                setTimeout(() => {
+                    setQuestionAnswer(question);
+                }, 1000);
+                
+                /* setTimeout(() => {
+                    
+                }, 1000); */
             }            
           })
           .catch((error) => {
             console.error(error)
           })
     }
+
+
+    useEffect(()=>{
+        if(question.length > 0){
+            getAnswer();
+        }
+    }, [question])
 
     async function onSubmit(e) {
         e.preventDefault();
@@ -127,12 +143,12 @@ export default function Questions(props){
 
     }   
 
-    useEffect(()=>{
+    /* useEffect(()=>{
         if(group){
             getAnswer();
         }
            
-    }, [group])
+    }, [group]) */
 
     function onChangeItem (item) {
         const newQuestion = question.map(e => {
