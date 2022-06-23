@@ -14,13 +14,13 @@
   box-shadow: 0.1% 0.1% #0e89af;
   color: red;
   text-align: center;
- 
+  height: 3vh;
 }
 
 .navMenu {
-  margin-top: 0.7vh;
+  margin-top: -3vh;
   font-family: 'Roboto Condensed', sans-serif;
-  
+
 }
 .navMenu ul {
   list-style: none;

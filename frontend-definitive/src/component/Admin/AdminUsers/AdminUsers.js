@@ -7,6 +7,7 @@ import { Header } from "../../User/Header/Header";
 import { Footer } from '../../User/Footer/Footer';
 import { useEffect, useState } from "react";
 import { api } from '../../../services/api'
+import "../AdminQuestions/AdminQuestions.css"
 
 export default function AdminUsers() {
   const [user, setUser] = useState([])
@@ -25,7 +26,7 @@ export default function AdminUsers() {
 
         <div id="areaUser">
         <div id="idQuestion">
-          <legend>Users cadastrados</legend>
+          {/* <legend>Users cadastrados</legend>
           <div className="tabela">
             <table className="table table-responsive">
               <thead>
@@ -60,7 +61,7 @@ export default function AdminUsers() {
 
             </table>
 
-          </div>
+          </div> */}
 
         </div>
 

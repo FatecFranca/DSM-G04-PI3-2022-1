@@ -106,7 +106,8 @@ export default function Questions(props){
                 }
 
                 if(!e.ativo){
-                    api.post('http://localhost:3000/answer', {assessment: assessment_id, question: e._id, objective_answer: e.selectionAnswer ? e.selectionAnswer : 'P', comments: e.observation ? e.observation : ''},{
+                    api.post('http://localhost:3000/answer', {assessment: assessment_id, question: e._id, objective_answer: 
+                    e.selectionAnswer ? e.selectionAnswer : 'P', comments: e.observation ? e.observation : ''},{
                         headers: {'x-access-token': token},
                     })
                     .then((res) => {

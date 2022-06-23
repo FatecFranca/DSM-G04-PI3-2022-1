@@ -1,34 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Condensed:wght@300&display=swap');
-
-.question {
-  height: 98.5vh;
-  border: 0.2vh solid ;
-
-  margin: 0.2%;
-  background-color: darkgray;
-}
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
 
 #areaQuestion {
   height: 74vh;
-  border: 0.2vh solid darkorange;
+  border: 0.2vh solid #B20000;
   font-family: 'Open Sans', sans-serif;
   margin: 0.2%;
-  background-color: white;
+  font-size: 2vh;
+  background-color: #f3f3f3;
   padding-bottom: 5px;
 }
 
 .tabela {
   max-width: 98vw;
   max-height: 68vh;
-  
   overflow: scroll;
 }
 
 .btn-ai {
   background-color: #2bb8c9;
-  border: 0.3px solid black;
-  
+  border: none;
+  border-radius: 3px;
+  color: #f3f3f3;
+  margin: 0.2vh;
 }
+
+#t_enunciado, #t_numero {
+  color: #715362;
+  font-family: 'Zen Kurenaido', sans-serif;
+  font-size: 3vh;
+}
+
+#p_numero {
+  text-align: center;
+}
+
 
 
 

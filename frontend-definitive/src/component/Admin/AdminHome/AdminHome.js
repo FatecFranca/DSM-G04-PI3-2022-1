@@ -5,7 +5,6 @@ import AreaDados from "../AreaDados/AreaDados";
 import { Header } from "../../User/Header/Header";
 import { Footer } from '../../User/Footer/Footer';
 import Rodape from "../Rodape/Rodape";
-
 import "./AdminHome.css"
 
 /*interface areaDadosColor {

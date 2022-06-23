@@ -1,16 +1,18 @@
 .question {
   height: 98.5vh;
-  border: 0.2vh solid blue;
-
   margin: 0.2%;
-  background-color: darkgray;
+  background-color: #f3f3f3; 
+
 }
 
 #areaAnswer {
   height: 74vh;
-  border: 0.2vh solid red;
-
+  border: 0.2vh solid #B20000;
   margin: 0.2%;
-  background-color: white;
+  background-color: #f3f3f3;
+  
 }
 
+.header {
+  margin-top: 0.5vh;
+}

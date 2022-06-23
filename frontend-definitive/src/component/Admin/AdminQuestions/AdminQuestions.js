@@ -79,7 +79,7 @@ function AdminQuestions() {
                       <tr>
                         <td id="p_numero">{item.number}</td>
                         <td onChange={e=>item.enunciation=e.target.value} contenteditable="true" id="p_enunciado">{item.enunciation}</td>
-
+                        
                         <button className="btn-ai" id="editar"> <a className="btn btn-primary btn-block" onClick={() => questionPut()}>Salvar</a> </button>
                         <button className="btn-ai" id="ativar"> <a className="btn btn-danger btn-block">Ativar/Inativar</a> </button>
                       </tr>
