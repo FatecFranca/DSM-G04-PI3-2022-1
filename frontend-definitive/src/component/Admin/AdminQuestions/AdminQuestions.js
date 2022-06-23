@@ -25,7 +25,32 @@ function AdminQuestions() {
           })
 
   }, []);
- 
+  
+  function questionPost() {
+    console.log(question)
+    api.post('http://localhost:3000/question', {
+            headers: {'x-access-token': token}
+          })
+          .then((res) => {
+            setQuestion(res.data);
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+  }
+
+  function questionPut() {
+    console.log(question)
+    api.put('http://localhost:3000/question', {
+            headers: {'x-access-token': token}
+          })
+          .then((res) => {
+            setQuestion(res.data);
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+  }
 
   return (
     <div className="question">
@@ -35,7 +60,8 @@ function AdminQuestions() {
 
       <div id="areaQuestion">
         <div id="idQuestion">
-          <legend>Registros de Questions Cadastrados</legend>
+          <legend>Questões cadastradas:</legend>
+          <br></br>
           <div className="tabela">
             <table className="table table-responsive">
               <thead>
@@ -43,7 +69,7 @@ function AdminQuestions() {
                   <th id="t_numero">Nº</th>
                   <th id="t_enunciado">Enunciado</th>
 
-                  <th id="novo"> <a className="btn btn-success btn-block">Novo Registro</a> </th>
+                  <th className="btn-ai" id="novo"> <a className="btn btn-success btn-block" onClick={() => questionPost()}>Novo Registro</a> </th>
                 </tr>
               </thead>
               <tbody>
@@ -52,10 +78,10 @@ function AdminQuestions() {
                     <>
                       <tr>
                         <td id="p_numero">{item.number}</td>
-                        <td id="p_enunciado">{item.enunciation}</td>
+                        <td onChange={e=>item.enunciation=e.target.value} contenteditable="true" id="p_enunciado">{item.enunciation}</td>
 
-                        <td id="editar"> <a className="btn btn-primary btn-block">Editar</a> </td>
-                        <td id="ativar"> <a className="btn btn-danger btn-block">Ativar/Inativar</a> </td>
+                        <button className="btn-ai" id="editar"> <a className="btn btn-primary btn-block" onClick={() => questionPut()}>Salvar</a> </button>
+                        <button className="btn-ai" id="ativar"> <a className="btn btn-danger btn-block">Ativar/Inativar</a> </button>
                       </tr>
                     </>
                   )

@@ -1,30 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+
 .menuHorizontal {
-  height: 8vh;
+  height: 7vh;
   /* border: 0.2vh solid darkmagenta; */
-  border: 0.2vh solid #B20000;
-  
+  /* border: 0.2vh solid #B20000; */
+  border: 0.2vh solid  #931914;
 
   margin: 0.2% 0.2% 0.2% 0.2%;
-  background-color: beige;
- 
-
+  /* background-color: beige; */ 
+  background-color: #005c6e;
   padding-top: 0.4%;
-
   box-shadow: 0.1% 0.1% #0e89af;
   color: red;
-
   text-align: center;
  
 }
 
 .navMenu {
   margin-top: 0.7vh;
-
-  padding-left: 50vh; /**/
+  font-family: 'Roboto Condensed', sans-serif;
+  
 }
 .navMenu ul {
   list-style: none;
-  text-align: left;
+  text-align: center;
 }
 .navMenu ul li {
   display: inline;
@@ -32,16 +32,18 @@
 .navMenu ul li a{
   padding-left: 2vw;
   display: inline-block;
-  color: black;
+  color: #f3f3f3;
   text-decoration: none;
-  font-size: 3vh;
+  font-size: 2.3vh;
 }
-.navMenu ul li a:hover{
+/* .navMenu ul li a:hover{
   padding-left: 2vw;
   display: inline-block;
   color: red;
   text-decoration: none;
   font-size: 3.5vh;
-}
+} */
+
+
 
 

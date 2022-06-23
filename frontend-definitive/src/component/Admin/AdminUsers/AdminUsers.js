@@ -12,7 +12,7 @@ export default function AdminUsers() {
   const [user, setUser] = useState([])
 
   useEffect(() => {
-    api.get('user')
+    api.get('http://localhost:3000/user')
       .then(response => setUser(response.data))
   }, []);
  
@@ -25,15 +25,15 @@ export default function AdminUsers() {
 
         <div id="areaUser">
         <div id="idQuestion">
-          <legend>Registros de Questions Cadastrados</legend>
+          <legend>Users cadastrados</legend>
           <div className="tabela">
             <table className="table table-responsive">
               <thead>
                 <tr id="titulo">
                   <th id="t_numero">Nº</th>
-                  <th id="t_enunciado">Enunciado</th>
+                  <th id="t_enunciado">Email</th>
 
-                  <th id="novo"> <a className="btn btn-success btn-block">Novo Registro</a> </th>
+                  <th id="novo"> <a className="btn btn-success btn-block">Data do Registro</a> </th>
                 </tr>
               </thead>
               <tbody>
@@ -45,8 +45,8 @@ export default function AdminUsers() {
                         <td id="p_enunciado">{item.email}</td>
                         <td id="p_enunciado">{item.date_registered}</td>
 
-                        <td id="editar"> <a className="btn btn-primary btn-block">Editar</a> </td>
-                        <td id="ativar"> <a className="btn btn-danger btn-block">Ativar/Inativar</a> </td>
+                        <button id="editar"> <a className="btn btn-primary btn-block">Editar</a> </button>
+                        <button id="ativar"> <a className="btn btn-danger btn-block">Ativar/Inativar</a> </button>
                       </tr>
                     </>
                   )

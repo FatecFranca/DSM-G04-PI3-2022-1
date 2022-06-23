@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Condensed:wght@300&display=swap');
+
 .question {
   height: 98.5vh;
-  border: 0.2vh solid blue;
+  border: 0.2vh solid ;
 
   margin: 0.2%;
   background-color: darkgray;
@@ -9,15 +11,24 @@
 #areaQuestion {
   height: 74vh;
   border: 0.2vh solid darkorange;
-
+  font-family: 'Open Sans', sans-serif;
   margin: 0.2%;
-  background-color: burlywood;
+  background-color: white;
+  padding-bottom: 5px;
 }
 
 .tabela {
   max-width: 98vw;
   max-height: 68vh;
-
+  
   overflow: scroll;
 }
+
+.btn-ai {
+  background-color: #2bb8c9;
+  border: 0.3px solid black;
+  
+}
+
+
 

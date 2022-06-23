@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
-import { AuthContext } from '../../contexts/Auth/AuthContext'
+import { AuthContext } from '../../../contexts/Auth/AuthContext'
 
 import { api } from '../../services/api.js'
 
@@ -44,7 +44,7 @@ const UserLogin = () => {
     if (retorno) {
       console.log("Logado")
       localStorage.setItem('x-access-token', retorno.data.token)
-
+      console.log("Retorno: " + retorno.data.token)
       navigate('/Home')
     } else {
       console.log("Não autorizado!")
